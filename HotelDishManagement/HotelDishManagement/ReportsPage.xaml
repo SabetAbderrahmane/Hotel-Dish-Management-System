@@ -1,14 +1,31 @@
-﻿<Page x:Class="HotelDishManagement.ReportsPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:HotelDishManagement"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="ReportPage">
+﻿<Page
+    x:Class="HotelDishManagement.ReportsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    mc:Ignorable="d"
+    Title="Reports">
 
     <Grid>
-        
+        <StackPanel Margin="20">
+            <!-- Filters -->
+            <TextBlock Text="Reports" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+            <TextBlock Text="Filter by Date:" />
+            <DatePicker Name="StartDatePicker" Width="200" Margin="0,5"/>
+            <DatePicker Name="EndDatePicker" Width="200" Margin="0,5"/>
+
+            <!-- Generate Report Button -->
+            <Button Content="Generate Report" Name="GenerateReportButton" Width="150" Margin="0,20" Click="GenerateReportButton_Click"/>
+
+            <!-- Data Table -->
+            <DataGrid Name="ReportDataGrid" AutoGenerateColumns="True" Margin="0,10"/>
+
+            <!-- Export Buttons -->
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <Button Content="Export to CSV" Width="150" Click="ExportToCSV_Click"/>
+                <Button Content="Export to PDF" Width="150" Margin="10,0" Click="ExportToPDF_Click"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

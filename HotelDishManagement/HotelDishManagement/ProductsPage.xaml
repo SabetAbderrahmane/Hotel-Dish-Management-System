@@ -55,7 +55,7 @@
 
                         <!-- Buttons -->
                         <Button Content="Upload Image" x:Name="UploadImageButton" Margin="0,20,0,10" Background="#FFD700" Foreground="#2A2B3C" Width="150" />
-                        <Button Content="Add Dish" x:Name="AddDishButton" Margin="0,10,0,10" Background="#FFD700" Foreground="#2A2B3C" Width="150" />
+                        <Button Content="Add Dish" x:Name="AddDishButton" Margin="0,10,0,10" Background="#FFD700" Foreground="#2A2B3C" Width="150" Click="AddDishButton_Click_1" />
                     </StackPanel>
                 </Border>
 
