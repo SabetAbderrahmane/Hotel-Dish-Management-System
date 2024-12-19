@@ -134,6 +134,41 @@ namespace HotelDishManagement
             DishTypeComboBox.SelectedIndex = -1;
             SpecialDishCheckBox.IsChecked = false;
         }
+
+        private void AddDishButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(DishNumberTextBox.Text) ||
+        string.IsNullOrWhiteSpace(DishNameTextBox.Text) ||
+        string.IsNullOrWhiteSpace(DishPriceTextBox.Text) ||
+        string.IsNullOrWhiteSpace(DishIntroductionTextBox.Text) ||
+        DishCategoryComboBox.SelectedItem == null ||
+        DishTypeComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Please fill in all fields before adding a dish.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            try
+            {
+                var newDish = new Dish
+                {
+                    Number = int.Parse(DishNumberTextBox.Text),
+                    Name = DishNameTextBox.Text,
+                    Price = double.Parse(DishPriceTextBox.Text),
+                    Introduction = DishIntroductionTextBox.Text,
+                    Category = ((ComboBoxItem)DishCategoryComboBox.SelectedItem).Content.ToString(),
+                    Type = ((ComboBoxItem)DishTypeComboBox.SelectedItem).Content.ToString(),
+                    IsSpecial = SpecialDishCheckBox.IsChecked == true
+                };
+
+                Dishes.Add(newDish);
+                ClearInputFields();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while adding the dish: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 
     public class Dish
