@@ -15,5 +15,4 @@ This project is a management system for hotel dishes. It helps manage dish inven
 1. Clone this repository.
 2. Open the project in your preferred IDE.
 3. Run the program and follow the instructions.
-## Feature: Added New Branch
-This branch was created to test branching and merging.
+
