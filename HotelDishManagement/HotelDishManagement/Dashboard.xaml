@@ -1,0 +1,35 @@
+﻿<Window x:Class="HotelDishManagement.Dashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Dashboard" Height="600" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <!-- Main Layout -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <!-- Sidebar -->
+            <ColumnDefinition Width="*"/>
+            <!-- Content Area -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <StackPanel Background="#2B2D42" VerticalAlignment="Stretch" Grid.Column="0">
+            <!-- Application Title -->
+            <TextBlock Text="POS System" FontSize="24" FontWeight="Bold" Foreground="White" Margin="20,30,20,30" HorizontalAlignment="Center" />
+
+            <!-- Sidebar Buttons -->
+            <Button Style="{StaticResource SidebarButton}" Content="Dashboard" Tag="/HotelDishManagement;component/Assets/dashboard.png" Click="NavigatePage" />
+            <Button Style="{StaticResource SidebarButton}" Content="Categories" Tag="/HotelDishManagement;component/Assets/categories.png" Click="NavigatePage" />
+            <Button Style="{StaticResource SidebarButton}" Content="Products" Tag="/HotelDishManagement;component/Assets/products.png" Click="NavigatePage" />
+            <Button Style="{StaticResource SidebarButton}" Content="Tables" Tag="/HotelDishManagement;component/Assets/tables.png" Click="NavigatePage" />
+            <Button Style="{StaticResource SidebarButton}" Content="Staff" Tag="/HotelDishManagement;component/Assets/staff.png" Click="NavigatePage" />
+            <Button Style="{StaticResource SidebarButton}" Content="Reports" Tag="/HotelDishManagement;component/Assets/reports.png" Click="NavigatePage" />
+            <Button Style="{StaticResource SidebarButton}" Content="Settings" Tag="/HotelDishManagement;component/Assets/settings.png" Click="NavigatePage" />
+
+            <!-- Exit Button -->
+            <Button Style="{StaticResource SidebarExitButton}" Content="Exit" Tag="/HotelDishManagement;component/Assets/exit.png" Click="ExitApplication" />
+        </StackPanel>
+
+        <!-- Content Frame -->
+        <Frame Name="ContentFrame" Grid.Column="1" NavigationUIVisibility="Hidden" />
+    </Grid>
+</Window>

@@ -1,0 +1,74 @@
+﻿<Page x:Class="HotelDishManagement.StaffPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      Title="StaffPage">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <Grid Background="#1E1E2F" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <TextBlock Text="Staff Management" FontSize="26" FontWeight="Bold" Foreground="White" Margin="0,0,0,20" />
+
+            <!-- Content Section -->
+            <Grid Grid.Row="1" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Input Form -->
+                <Border Background="#20212E" CornerRadius="10" Margin="10">
+                    <StackPanel Margin="20">
+                        <TextBlock Text="Add / Edit Staff" FontSize="20" FontWeight="SemiBold" Foreground="#FFD700" Margin="0,0,0,15" />
+
+                        <TextBlock Text="Staff ID:" Margin="0,10,0,5" Foreground="White" />
+                        <TextBox x:Name="StaffIdTextBox" Margin="0,5,0,10" Background="#2A2B3C" Foreground="White" BorderBrush="#FFD700" BorderThickness="1" />
+
+                        <TextBlock Text="Name:" Margin="0,10,0,5" Foreground="White" />
+                        <TextBox x:Name="NameTextBox" Margin="0,5,0,10" Background="#2A2B3C" Foreground="White" BorderBrush="#FFD700" BorderThickness="1" />
+
+                        <TextBlock Text="Role:" Margin="0,10,0,5" Foreground="White" />
+                        <ComboBox x:Name="RoleComboBox" Margin="0,5,0,10" Background="#2A2B3C" Foreground="White" BorderBrush="#FFD700" BorderThickness="1">
+                            <ComboBoxItem Content="Manager" />
+                            <ComboBoxItem Content="Waiter" />
+                            <ComboBoxItem Content="Chef" />
+                            <ComboBoxItem Content="Cleaner" />
+                        </ComboBox>
+
+                        <TextBlock Text="Contact:" Margin="0,10,0,5" Foreground="White" />
+                        <TextBox x:Name="ContactTextBox" Margin="0,5,0,10" Background="#2A2B3C" Foreground="White" BorderBrush="#FFD700" BorderThickness="1" />
+
+                        <TextBlock Text="Address:" Margin="0,10,0,5" Foreground="White" />
+                        <TextBox x:Name="AddressTextBox" Margin="0,5,0,10" Background="#2A2B3C" Foreground="White" BorderBrush="#FFD700" BorderThickness="1" AcceptsReturn="True" TextWrapping="Wrap" Height="60" />
+
+                        <Button Content="Add Staff" x:Name="AddStaffButton" Margin="0,20,0,10" Background="#FFD700" Foreground="#2A2B3C" Width="150" Click="AddStaffButton_Click" />
+                    </StackPanel>
+                </Border>
+
+                <!-- Staff List and Chart -->
+                <Border Grid.Column="1" Background="#20212E" CornerRadius="10" Margin="10">
+                    <StackPanel Margin="20">
+                        <TextBlock Text="Staff List" FontSize="20" FontWeight="SemiBold" Foreground="#FFD700" Margin="0,0,0,15" />
+
+                        <DataGrid x:Name="StaffDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Margin="0,10,0,0" Background="#2A2B3C"
+                                  Foreground="White" BorderBrush="#FFD700" BorderThickness="1" RowBackground="#1E1E2F" AlternatingRowBackground="#28293C">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Staff ID" Binding="{Binding StaffId}" Width="100" />
+                                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
+                                <DataGridTextColumn Header="Role" Binding="{Binding Role}" Width="150" />
+                                <DataGridTextColumn Header="Contact" Binding="{Binding Contact}" Width="150" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <TextBlock Text="Role Distribution" FontSize="20" FontWeight="SemiBold" Foreground="#FFD700" Margin="20,20,0,5" />
+                        <lvc:PieChart x:Name="RoleDistributionChart" Foreground="White" Margin="0,10" LegendLocation="Right" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>

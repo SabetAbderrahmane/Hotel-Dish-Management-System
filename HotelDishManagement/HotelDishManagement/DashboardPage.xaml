@@ -1,0 +1,50 @@
+﻿<Page x:Class="HotelDishManagement.DashboardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      Title="DashboardPage">
+    <Grid Background="#F4F4F4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <!-- Row for Charts -->
+            <RowDefinition Height="1*" />
+            <!-- Row for Recent Activity -->
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <!-- Column for Line Chart -->
+            <ColumnDefinition Width="1*" />
+            <!-- Column for Pie Chart -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Sales Trend Line Chart -->
+        <GroupBox Header="Sales Trend" Margin="10" Grid.Row="0" Grid.Column="0">
+            <lvc:CartesianChart x:Name="SalesTrendChart">
+                <lvc:CartesianChart.Series>
+                    <lvc:LineSeries Title="Sales" PointGeometrySize="15" />
+                </lvc:CartesianChart.Series>
+            </lvc:CartesianChart>
+        </GroupBox>
+
+        <!-- Product Popularity Pie Chart -->
+        <GroupBox Header="Product Popularity" Margin="10" Grid.Row="0" Grid.Column="1">
+            <lvc:PieChart x:Name="ProductPopularityChart">
+                <lvc:PieChart.Series>
+                    <lvc:PieSeries Title="Burgers" Values="20" />
+                    <lvc:PieSeries Title="Pizzas" Values="35" />
+                    <lvc:PieSeries Title="Drinks" Values="45" />
+                </lvc:PieChart.Series>
+            </lvc:PieChart>
+        </GroupBox>
+
+        <!-- Occupancy Rate Bar Chart -->
+        <GroupBox Header="Occupancy Rate" Margin="10" Grid.Row="1" Grid.ColumnSpan="2">
+            <lvc:CartesianChart x:Name="OccupancyRateChart">
+                <lvc:CartesianChart.Series>
+                    <lvc:ColumnSeries Title="Occupied Tables" Values="50, 30, 70, 40" />
+                </lvc:CartesianChart.Series>
+            </lvc:CartesianChart>
+        </GroupBox>
+    </Grid>
+</Page>

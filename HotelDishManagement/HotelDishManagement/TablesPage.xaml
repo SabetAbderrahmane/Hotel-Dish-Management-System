@@ -1,0 +1,88 @@
+﻿<Page x:Class="HotelDishManagement.TablesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      Title="TablesPage">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <Grid Background="#1E1E2F" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <TextBlock Text="Table Management" FontSize="26" FontWeight="Bold" Foreground="White" Margin="0,0,0,20" />
+
+            <!-- Main Content -->
+            <Grid Grid.Row="1" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Reservation Form -->
+                <Border Background="#20212E" Margin="10" CornerRadius="10">
+                    <StackPanel Margin="20">
+                        <TextBlock Text="Reservation Form" FontSize="20" FontWeight="SemiBold" Foreground="#FFD700" Margin="0,0,0,15" />
+
+                        <TextBlock Text="Customer Name:" Margin="0,10,0,5" Foreground="White" />
+                        <TextBox x:Name="CustomerNameTextBox" Margin="0,5,0,10" Background="#2A2B3C" Foreground="White" BorderBrush="#FFD700" BorderThickness="1" />
+
+                        <TextBlock Text="Number of Guests:" Margin="0,10,0,5" Foreground="White" />
+                        <TextBox x:Name="NumberOfGuestsTextBox" Margin="0,5,0,10" Background="#2A2B3C" Foreground="White" BorderBrush="#FFD700" BorderThickness="1" />
+
+                        <TextBlock Text="Reservation Date:" Margin="0,10,0,5" Foreground="White" />
+                        <DatePicker x:Name="ReservationDatePicker" Margin="0,5,0,10" Background="#2A2B3C" Foreground="White" BorderBrush="#FFD700" />
+
+                        <TextBlock Text="Reservation Time:" Margin="0,10,0,5" Foreground="White" />
+                        <ComboBox x:Name="ReservationTimeComboBox" Margin="0,5,0,10" Background="#2A2B3C" Foreground="White" BorderBrush="#FFD700" BorderThickness="1">
+                            <ComboBoxItem Content="12:00 PM" />
+                            <ComboBoxItem Content="12:30 PM" />
+                            <ComboBoxItem Content="1:00 PM" />
+                            <ComboBoxItem Content="1:30 PM" />
+                        </ComboBox>
+
+                        <TextBlock Text="Special Requests:" Margin="0,10,0,5" Foreground="White" />
+                        <TextBox x:Name="SpecialRequestsTextBox" Margin="0,5,0,10" AcceptsReturn="True" TextWrapping="Wrap" Height="60"
+                                 Background="#2A2B3C" Foreground="White" BorderBrush="#FFD700" BorderThickness="1" />
+
+                        <Button Content="Add Reservation" x:Name="AddReservationButton" Margin="0,20,0,10" Background="#FFD700" Foreground="#2A2B3C" Width="150" Click="AddReservationButton_Click" />
+                    </StackPanel>
+                </Border>
+
+                <!-- Table Overview -->
+                <Border Grid.Column="1" Background="#20212E" Margin="10" CornerRadius="10">
+                    <StackPanel Margin="20">
+                        <TextBlock Text="Table Overview" FontSize="20" FontWeight="SemiBold" Foreground="#FFD700" Margin="0,0,0,15" />
+
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,20">
+                            <Button Content="Available" x:Name="FilterAvailableButton" Background="#FFD700" Foreground="#2A2B3C" Width="100" Margin="5" Click="FilterAvailable_Click" />
+                            <Button Content="Reserved" x:Name="FilterReservedButton" Background="#FFD700" Foreground="#2A2B3C" Width="100" Margin="5" Click="FilterReserved_Click" />
+                            <Button Content="Occupied" x:Name="FilterOccupiedButton" Background="#FFD700" Foreground="#2A2B3C" Width="100" Margin="5" Click="FilterOccupied_Click" />
+                        </StackPanel>
+
+                        <ListView x:Name="TableListView" Background="#2A2B3C" Foreground="White" BorderBrush="#FFD700" BorderThickness="1" Height="200">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Margin="5">
+                                        <TextBlock Text="{Binding TableNumber}" FontWeight="Bold" Foreground="White" Margin="5,0" />
+                                        <TextBlock Text=": " Foreground="White" />
+                                        <TextBlock Text="{Binding Status}" Foreground="#FFD700" Margin="5,0" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </Border>
+
+                <!-- Live Chart -->
+                <Border Grid.Column="1" Background="#20212E" Margin="10" CornerRadius="10">
+                    <StackPanel Margin="20">
+                        <TextBlock Text="Live Table Status Chart" FontSize="20" FontWeight="SemiBold" Foreground="#FFD700" Margin="0,0,0,15" />
+                        <lvc:PieChart x:Name="TableStatusChart" LegendLocation="Right" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>

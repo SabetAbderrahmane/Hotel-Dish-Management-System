@@ -1,0 +1,34 @@
+﻿<Page x:Class="HotelDishManagement.CategoriesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="CategoriesPage"
+      Background="#2E3B55">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Add Category Button -->
+        <Button HorizontalAlignment="Right" Width="180" Height="40" Background="#D4A017" Foreground="White" 
+                Click="AddCategory_Click" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Image Source="Assets/add_icon.png" Width="20" Height="20" Margin="0,0,5,0" />
+                <TextBlock Text="Add New Category" VerticalAlignment="Center" />
+            </StackPanel>
+        </Button>
+
+        <!-- Scrollable Categories List -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="0,10,0,0">
+                <!-- Large Categories Section -->
+                <TextBlock Text="Large Categories" FontSize="22" FontWeight="Bold" Foreground="White" Margin="10,20,0,10" />
+                <UniformGrid Columns="2" x:Name="LargeCategoriesGrid" Margin="10" />
+
+                <!-- Small Categories Section -->
+                <TextBlock Text="Small Categories" FontSize="22" FontWeight="Bold" Foreground="White" Margin="10,20,0,10" />
+                <UniformGrid Columns="3" x:Name="SmallCategoriesGrid" Margin="10" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
