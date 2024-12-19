@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the information below."
+authors:
+  - family-names: "Sabet"
+    given-names: "Abderrahmane"
+    
+title: "Hotel Dish Management System Project"
+version: "1.0.0" 
+doi: "10.5281/zenodo.xxxxxxx" 
+date-released: "2024-12-20" 
